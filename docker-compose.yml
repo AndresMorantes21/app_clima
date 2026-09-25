@@ -1,0 +1,57 @@
+services:
+
+  mysql:
+    image: mysql:8.0
+
+    container_name: clima_mysql
+
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: base_sensoresv2
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  backend:
+    build: ./clima-backend
+
+    container_name: clima_backend
+
+    restart: always
+
+    ports:
+      - "5001:3000"
+
+    depends_on:
+      - mysql
+
+    environment:
+      DB_HOST: mysql
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: base_sensoresv2
+      DB_PORT: 3306
+
+  frontend:
+    build: ./clima-frontend
+
+    container_name: clima_frontend
+
+    restart: always
+
+    ports:
+      - "3001:5173"
+
+    depends_on:
+      - backend
+
+    environment:
+      VITE_API_URL: http://localhost:5001
+
+volumes:
+  mysql_data:

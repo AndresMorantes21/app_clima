@@ -1,0 +1,417 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    /*background: linear-gradient(135deg, #5f9cff, #b6d0ff);*/
+    color: #fff;
+    background-color: #5f9cff;
+}
+
+/* LAYOUT */
+.layout {
+    display: flex;
+    height: 100vh;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar li {
+    list-style: none;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sidebar li:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar li.active {
+    background: white;
+    color: #333;
+}
+
+/* MAIN */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* MAIN WEATHER */
+.main-weather {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+}
+
+.main-weather h1 {
+    font-size: 90px;
+}
+
+.main-weather p {
+    font-size: 20px;
+}
+
+.details {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* HOURLY */
+.hourly {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 10px;
+}
+.hour-card {
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.hour-card:hover {
+    transform: scale(1.05);
+}
+
+/* RIGHT PANEL */
+.right-panel {
+    width: 250px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+#title-righ-panel {
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+/* SCROLL BONITO */
+.hourly::-webkit-scrollbar {
+    height: 6px;
+}
+
+.hourly::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.5);
+    border-radius: 10px;
+}
+
+/* ANIMACIÓN SUAVE */
+.main-weather,
+.hour-card,
+.sidebar li {
+    transition: all 0.3s ease;
+}
+
+.station-name {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.date {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-top: 5px;
+}
+
+.hour {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+.label {
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+.value {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+
+/*PROMEDIOS*/
+.daily-averages {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    gap: 15px;
+}
+
+.avg-card {
+    flex: 1;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    padding: 4px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.avg-card p {
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+.avg-card h3 {
+    margin-top: 5px;
+}
+
+.weather-text {
+    font-size: 18px;
+    margin-bottom: 1px;
+    opacity: 0.9;
+}
+
+.predict-list {
+    margin-top: 10px;
+}
+
+.predict-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.right-panel .avg-card {
+    margin-bottom: 10px;
+}
+
+
+/*Efectos nuevos*/
+.hour-card:hover {
+    transform: scale(1.08);
+    background: rgba(255,255,255,0.35);
+}
+
+.avg-card:hover {
+    transform: translateY(-3px);
+}
+
+.predict-item:hover {
+    transform: scale(1.03);
+}
+.main-weather,
+.hour-card,
+.avg-card,
+.right-panel,
+.sidebar {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+}
+
+* {
+    transition: all 0.25s ease;
+}
+
+.main-weather h1 {
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+
+/*Responsive*/
+/* 📱 TABLET */
+@media (max-width: 1024px) {
+
+    .layout {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .sidebar {
+        width: 100%;
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+    }
+
+    .sidebar ul {
+        display: flex;
+        gap: 10px;
+    }
+
+    .sidebar li {
+        white-space: nowrap;
+    }
+
+    .right-panel {
+        width: 100%;
+    }
+
+}
+
+/* 📱 MÓVIL */
+@media (max-width: 768px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .layout {
+        padding: 10px;
+        gap: 15px;
+    }
+
+    /* 🔥 Sidebar tipo scroll horizontal */
+    .sidebar {
+        padding: 10px;
+    }
+
+    .sidebar h2 {
+        display: none;
+    }
+
+    .sidebar ul {
+        display: flex;
+        overflow-x: auto;
+    }
+
+    /* 🌡 MainWeather más compacto */
+    .main-weather {
+        padding: 20px;
+    }
+
+    .main-weather h1 {
+        font-size: 60px;
+    }
+
+    .station-name {
+        font-size: 20px;
+    }
+
+    .details {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    /* 🔥 Hourly scroll horizontal tipo app */
+    .hourly {
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .hour-card {
+        min-width: 80px;
+        flex-shrink: 0;
+    }
+
+    /* 📊 Promedios en columna */
+    .daily-averages {
+        flex-direction: column;
+    }
+
+}
+
+/* 📱 MÓVIL PEQUEÑO */
+@media (max-width: 480px) {
+
+    .main-weather h1 {
+        font-size: 50px;
+    }
+
+    .weather-text {
+        font-size: 16px;
+    }
+
+    .hour-card {
+        min-width: 70px;
+        padding: 8px;
+    }
+
+    .value {
+        font-size: 16px;
+    }
+
+    .avg-card p {
+        font-size: 14px;
+    }
+
+}
+
+
+/* 🌈 FONDO ANIMADO */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.main-weather {
+    background-size: 200% 200%;
+    animation: gradientMove 8s ease infinite;
+}
+
+.calendar-box {
+    margin-top: 20px;
+    background: rgba(255,255,255,0.15);
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.active-day {
+    background: #ffffff !important;
+    color: #333 !important;
+    border-radius: 50%;
+}
+
+body.night-mode {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    transition: background 0.6s ease;
+}
+
+.main-weather {
+    position: relative;
+}
+
+.clock {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+body.day-mode {
+    background: linear-gradient(135deg, #56ccf2, #2f80ed);
+}
+
+body.afternoon-mode {
+    background: linear-gradient(135deg, #ff9966, #ff5e62);
+}
+
+body.night-mode {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
